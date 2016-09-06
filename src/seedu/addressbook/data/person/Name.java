@@ -4,7 +4,7 @@ import seedu.addressbook.data.exception.IllegalValueException;
 
 import java.util.Arrays;
 import java.util.List;
-
+import seedu.addressbook.data.person.LevenshteinDistance;;
 /**
  * Represents a Person's name in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
@@ -59,6 +59,22 @@ public class Name {
     @Override
     public int hashCode() {
         return fullName.hashCode();
+    }
+    
+    /**
+     * Returns true of the other name is very similar to this name.
+     * Two names are considered similar if the levenshtein distance is less than 10
+     */
+    public boolean isSimilar(Name other) {
+    	LevenshteinDistance levenDistance = new LevenshteinDistance(10);
+    	int distance = levenDistance.apply(fullName, other.fullName);
+    	System.out.println("name: " + fullName + "\tother name: " + other.fullName + "\tdistance : " + distance);
+    	if(distance >= 5) {
+    		return false;
+    	}
+    	else {
+    		return true;
+    	}
     }
 
 }

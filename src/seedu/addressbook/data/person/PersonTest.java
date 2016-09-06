@@ -35,7 +35,7 @@ public class PersonTest {
 	@Test
 	public void testNameIsSimilarFirstThird() throws IllegalValueException {
 		name = new Name("John S Doe");
-		Name otherName = new Name("john s");
+		Name otherName = new Name("john s do");
 		boolean similar = name.isSimilar(otherName);
 		assertEquals(true, similar);
 	}
